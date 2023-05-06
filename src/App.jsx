@@ -60,57 +60,17 @@ export default function App() {
     checkWin()
   }, [board])
   function restart() {
-    setBoard([
-    {
-      clickable: true,
-      mark: ' ',
-      id: 0
-    },
-    {
-      clickable: true,
-      mark: ' ',
-      id: 1
-    },
-    {
-      clickable: true,
-      mark: ' ',
-      id: 2
-    },
-    {
-      clickable: true,
-      mark: ' ',
-      id: 3
-    },
-    {
-      clickable: true,
-      mark: ' ',
-      id: 4
-    },
-    {
-      clickable: true,
-      mark: ' ',
-      id: 5
-    },
-    {
-      clickable: true,
-      mark: ' ',
-      id: 6
-    },
-    {
-      clickable: true,
-      mark: ' ',
-      id: 7
-    },
-    {
-      clickable: true,
-      mark: ' ',
-      id: 8
-    }
-  ])
-    setWin('')
-    setTurn(0)
-    setEndScreen(false)
-  }
+  const newBoard = board.map((cell) => ({
+    clickable: true,
+    mark: ' ',
+    id: cell.id,
+  }));
+  setBoard(newBoard);
+  setWin('');
+  setTurn(0);
+  setEndScreen(false);
+}
+
   function checkWin() {
     if (board[0].mark == 'X' && board[1].mark == 'X' && board[2].mark == 'X') {
       setWin(true)
